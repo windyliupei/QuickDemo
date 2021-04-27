@@ -1,8 +1,5 @@
 import java.util.Date;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.FutureTask;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
+import java.util.concurrent.*;
 
 public class ThreadCreateDemo {
 
@@ -16,8 +13,21 @@ public class ThreadCreateDemo {
 
         //实现 Callable 去创建线程。
         //这个需要借助 Future 类
-        myCallable();
+        //myCallable();
 
+        //线程池
+        threadPool();
+
+
+    }
+
+    private static void threadPool() {
+        MyRunnable myRunnable = new MyRunnable();
+        ExecutorService executorService = Executors.newFixedThreadPool(2);
+        executorService.execute(myRunnable);
+        for (int i = 0; i < 10; i++) {
+            System.out.println(Thread.currentThread().getName()+"执行时间:"+new Date().getTime());
+        }
     }
 
     private static void myCallable() {
