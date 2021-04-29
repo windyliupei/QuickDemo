@@ -1,5 +1,6 @@
 import java.util.Date;
 import java.util.concurrent.*;
+import java.util.function.Supplier;
 
 public class ThreadCreateDemo {
 
@@ -15,8 +16,35 @@ public class ThreadCreateDemo {
         //这个需要借助 Future 类
         //myCallable();
 
+        //实现 Callable 去创建线程。
+        //https://www.liaoxuefeng.com/wiki/1252599548343744/1306581182447650
+        //这个需要借助 ComplementFuture 类
+        CompletableFuture<String> stringCompletableFuture = CompletableFuture.supplyAsync(
+                new Supplier<String>() {
+                    @Override
+                    public String get() {
+                        try {
+                            System.out.println("Enter CompletableFuture method!");
+                            Thread.sleep(10000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        return "Internal finished";
+                    }
+                }
+        );
+        stringCompletableFuture.whenCompleteAsync((str,err)->{
+            System.out.println(str);
+        });
+        //主线程被阻塞
+        stringCompletableFuture.join();
+
+        System.out.println("Main Thread was finished!");
+
+
+
         //线程池
-        threadPool();
+        //threadPool();
 
 
     }
