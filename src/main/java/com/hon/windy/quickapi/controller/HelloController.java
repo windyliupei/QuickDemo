@@ -8,8 +8,7 @@ import cn.hutool.json.JSONUtil;
 import com.hon.windy.quickapi.fek.Custom_content;
 import com.hon.windy.quickapi.fek.JsonRootBean;
 import com.hon.windy.quickapi.service.HelloService;
-import com.windowsazure.messaging.Notification;
-import com.windowsazure.messaging.NotificationHub;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -36,7 +35,6 @@ public class HelloController {
     @ResponseBody
     @PostMapping("/say/{message}")
     public String hello(@PathVariable("message") String message) throws InterruptedException {
-        service.push("hi:"+message);
 
         return "success";
     }
@@ -47,10 +45,5 @@ public class HelloController {
         return body;
     }
 
-    @ResponseBody
-    @GetMapping("/helloUrl")
-    public String helloUrl(@RequestParam String url) throws InterruptedException {
-        return url;
-    }
 
 }

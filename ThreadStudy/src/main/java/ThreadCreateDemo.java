@@ -4,7 +4,7 @@ import java.util.function.Supplier;
 
 public class ThreadCreateDemo {
 
-    public static void main(String[] args){
+    public static void main(String[] args) throws InterruptedException {
 
         //继承 Thread 类去创建线程。
         //myThread();
@@ -25,7 +25,7 @@ public class ThreadCreateDemo {
                     public String get() {
                         try {
                             System.out.println("Enter CompletableFuture method!");
-                            Thread.sleep(10000);
+                            Thread.sleep(5000);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
@@ -36,12 +36,11 @@ public class ThreadCreateDemo {
         stringCompletableFuture.whenCompleteAsync((str,err)->{
             System.out.println(str);
         });
-        //主线程被阻塞
-        stringCompletableFuture.join();
+
 
         System.out.println("Main Thread was finished!");
 
-
+        Thread.sleep(10000);
 
         //线程池
         //threadPool();
