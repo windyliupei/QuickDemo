@@ -1,8 +1,0 @@
-com/hon/windy/quickapi/message/MessageEventHandler.class
-com/hon/windy/quickapi/controller/HelloController.class
-com/hon/windy/quickapi/message/MessageEvent.class
-com/hon/windy/quickapi/message/MessageEventFactory.class
-com/hon/windy/quickapi/WebApiApplication.class
-com/hon/windy/quickapi/service/HelloService.class
-com/hon/windy/quickapi/EventExceptionHandler.class
-com/hon/windy/quickapi/AsyncConfiguration.class
